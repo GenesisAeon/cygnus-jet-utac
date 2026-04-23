@@ -251,7 +251,7 @@ class CygnusJetUTAC:
             "jet_velocity_c": self._jet.beta,
             "jet_extent_ly": jet_extent_ly,
             "orbital_period_days": self.orbital_period / 86400.0,
-            "accretion_efficiency": CYG_ACCRETION_EFFICIENCY,
+            "accretion_efficiency": float(H_mean),
             # UTAC calibration
             "gamma_jet": self.gamma_jet,
             "sigma_phi_min": self._calibration["sigma_phi_min"],
@@ -427,7 +427,7 @@ class CygnusJetUTAC:
             "results": {k: v for k, v in self._results.items()
                         if not isinstance(v, list)},
             "prabu2026_targets": {
-                "jet_power_W": 3.846e37,
+                "jet_power_W": 3.846e30,
                 "jet_velocity_c": 0.50,
                 "accretion_efficiency": 0.10,
                 "jet_extent_ly": 16.0,

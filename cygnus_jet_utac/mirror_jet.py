@@ -90,6 +90,7 @@ class JetMirrorMachine:
         self._last_event_t: float = -tau  # prevent back-to-back triggers
         self._current_divergence: float = 0.0
         self._current_threshold: float = theta0
+        self._n_steps: int = 0  # step counter for warmup guard
 
     # ── Update ────────────────────────────────────────────────────────────────
 
@@ -126,10 +127,13 @@ class JetMirrorMachine:
 
         # Push current direction into buffer
         self._buf.append(d_now.copy())
+        self._n_steps += 1
 
-        # Check trigger — enforce refractory period of 0.5 τ
+        # Only trigger after the buffer is fully populated (warmup = n_delay steps)
+        # and the refractory period (0.5 τ) has elapsed since the last event.
         triggered = (
-            self._current_divergence > self._current_threshold
+            self._n_steps > self._n_delay
+            and self._current_divergence > self._current_threshold
             and (t - self._last_event_t) > 0.5 * self.tau
         )
 
@@ -187,6 +191,7 @@ class JetMirrorMachine:
         self._dance_events.clear()
         self._last_event_t = -self.tau
         self._current_divergence = 0.0
+        self._n_steps = 0
 
     def to_dict(self) -> dict:
         """Serialize Mirror-Machine state to dictionary."""

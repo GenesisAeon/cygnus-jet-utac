@@ -15,7 +15,7 @@ from cygnus_jet_utac.constants import (
     CYG_BH_MASS,
     CYG_COMPANION_MASS,
     CYG_ORBITAL_PERIOD,
-    CYG_ORBITAL_SEPARATION,
+    G,
 )
 
 
@@ -47,7 +47,10 @@ class CygnusOrbit:
         self.t0 = t0
         self._total_mass = bh_mass + companion_mass
         self._omega = 2.0 * math.pi / period  # rad/s
-        self._separation = CYG_ORBITAL_SEPARATION
+        # Derive separation from Kepler's third law using the provided masses/period
+        self._separation = (
+            G * self._total_mass * period**2 / (4.0 * math.pi**2)
+        ) ** (1.0 / 3.0)
 
     @property
     def separation_m(self) -> float:
