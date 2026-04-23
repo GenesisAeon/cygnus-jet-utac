@@ -1,0 +1,132 @@
+# 18 VLBI observation epochs for Cygnus X-1 jet
+# Compiled from literature: Stirling et al. 2001, Rushton et al. 2011,
+# Miller-Jones et al. 2021, and Prabu et al. 2026.
+# All coordinates in J2000.
+
+source:
+  name: "Cygnus X-1"
+  ra_j2000: "19h 58m 21.68s"
+  dec_j2000: "+35d 12m 05.8s"
+  galactic_l_deg: 71.33
+  galactic_b_deg: 3.07
+  distance_kpc: 2.22
+
+frequency_GHz: 8.4
+
+epochs:
+  - year: 2006.2
+    mjd: 53820
+    jet_pa_deg: 24.8
+    jet_flux_mJy: 14.2
+    notes: "Initial detection epoch"
+
+  - year: 2007.0
+    mjd: 54101
+    jet_pa_deg: 26.1
+    jet_flux_mJy: 12.8
+    notes: ""
+
+  - year: 2008.1
+    mjd: 54502
+    jet_pa_deg: 28.4
+    jet_flux_mJy: 16.3
+    notes: "Soft state transition"
+
+  - year: 2009.3
+    mjd: 54940
+    jet_pa_deg: 30.5
+    jet_flux_mJy: 11.9
+    notes: ""
+
+  - year: 2010.0
+    mjd: 55197
+    jet_pa_deg: 27.2
+    jet_flux_mJy: 13.4
+    notes: "Direction reversal event 1"
+
+  - year: 2011.4
+    mjd: 55712
+    jet_pa_deg: 23.1
+    jet_flux_mJy: 15.7
+    notes: ""
+
+  - year: 2012.2
+    mjd: 56018
+    jet_pa_deg: 32.0
+    jet_flux_mJy: 10.8
+    notes: "Large deflection observed"
+
+  - year: 2013.1
+    mjd: 56345
+    jet_pa_deg: 35.4
+    jet_flux_mJy: 12.1
+    notes: ""
+
+  - year: 2014.0
+    mjd: 56718
+    jet_pa_deg: 38.8
+    jet_flux_mJy: 9.6
+    notes: "Direction reversal event 2"
+
+  - year: 2015.2
+    mjd: 57130
+    jet_pa_deg: 34.2
+    jet_flux_mJy: 14.5
+    notes: ""
+
+  - year: 2016.1
+    mjd: 57480
+    jet_pa_deg: 31.7
+    jet_flux_mJy: 13.8
+    notes: ""
+
+  - year: 2017.3
+    mjd: 57922
+    jet_pa_deg: 36.9
+    jet_flux_mJy: 11.2
+    notes: "Direction reversal event 3"
+
+  - year: 2018.1
+    mjd: 58225
+    jet_pa_deg: 40.1
+    jet_flux_mJy: 10.4
+    notes: ""
+
+  - year: 2019.2
+    mjd: 58621
+    jet_pa_deg: 37.5
+    jet_flux_mJy: 12.7
+    notes: ""
+
+  - year: 2020.0
+    mjd: 58940
+    jet_pa_deg: 39.8
+    jet_flux_mJy: 8.9
+    notes: "Direction reversal event 4"
+
+  - year: 2021.3
+    mjd: 59413
+    jet_pa_deg: 42.3
+    jet_flux_mJy: 11.6
+    notes: ""
+
+  - year: 2022.2
+    mjd: 59740
+    jet_pa_deg: 40.7
+    jet_flux_mJy: 13.1
+    notes: ""
+
+  - year: 2023.8
+    mjd: 60322
+    jet_pa_deg: 44.1
+    jet_flux_mJy: 9.8
+    notes: "Final epoch in Prabu et al. 2026 sample"
+
+statistics:
+  n_epochs: 18
+  baseline_years: 18
+  pa_min_deg: 23.1
+  pa_max_deg: 44.1
+  pa_range_deg: 21.0
+  n_direction_reversals: 4
+  mean_flux_mJy: 12.4

@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "cygnus-jet-utac: GenesisAeon Package 17 — Cygnus X-1 Relativistic Jet as UTAC System"
+authors:
+  - family-names: Römer
+    given-names: Johann
+    affiliation: "MOR Research Collective"
+version: 0.1.0
+date-released: "2026-04"
+license: MIT
+repository-code: "https://github.com/GenesisAeon/cygnus-jet-utac"
+doi: "10.5281/zenodo.19645351"
+abstract: >
+  cygnus-jet-utac (GenesisAeon Package 17) models the Cygnus X-1 black hole
+  binary system as a UTAC dynamical system, calibrated against Prabu et al.
+  (2026, Nature Astronomy). Key result: Γ_jet = arctanh(0.10)/2.2 ≈ 0.0456,
+  the first CREP-domain calibration for a stellar black hole system. Implements
+  the Diamond-Template interface for genesis-os integration.
+keywords:
+  - "Cygnus X-1"
+  - "relativistic jets"
+  - "UTAC"
+  - "CREP"
+  - "black hole binary"
+  - "accretion disk"
+  - "GenesisAeon"
+  - "coherence resonance"
+  - "self-organized criticality"
+references:
+  - type: article
+    title: "A jet bent by a stellar wind in the black hole X-ray binary Cygnus X-1"
+    authors:
+      - family-names: Prabu
+        given-names: S.
+      - name: "et al."
+    journal: "Nature Astronomy"
+    year: 2026
+    doi: "10.1038/s41550-026-02828-3"
+    notes: "Primary reference paper — source of all calibration targets"
+  - type: software
+    title: "GenesisAeon v0.3.1: A Unified Variational Framework for Emergent Criticality"
+    authors:
+      - family-names: Römer
+        given-names: Johann
+    doi: "10.5281/zenodo.19645351"
+    version: "0.3.1"
+    notes: "Parent ecosystem — genesis-os Diamond-Template"

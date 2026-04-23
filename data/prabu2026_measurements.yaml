@@ -1,0 +1,89 @@
+# Reference values from Prabu et al. (2026, Nature Astronomy)
+# DOI: 10.1038/s41550-026-02828-3
+# "A jet bent by a stellar wind in the black hole X-ray binary Cygnus X-1"
+#
+# All values in SI units unless noted. Uncertainties are 1σ where reported.
+
+metadata:
+  title: "A jet bent by a stellar wind in the black hole X-ray binary Cygnus X-1"
+  authors: ["Prabu, S.", "et al."]
+  journal: "Nature Astronomy"
+  year: 2026
+  doi: "10.1038/s41550-026-02828-3"
+  observation_baseline_years: 18
+  observation_start: 2006
+  observation_end: 2024
+  instrument: "VLBI (VLBA + EVN + e-MERLIN)"
+
+system_parameters:
+  black_hole:
+    mass_Msun: 21.0
+    mass_kg: 4.1769e31
+    type: "Kerr black hole"
+
+  companion:
+    name: "HDE 226868"
+    type: "Blue supergiant (O9.7 Iab)"
+    mass_Msun: 41.0
+    mass_kg: 8.1549e31
+    radius_Rsun: 22.0
+    wind_terminal_velocity_km_s: 2100.0
+    mass_loss_rate_Msun_yr: 2.5e-6
+
+  binary_system:
+    distance_kpc: 2.22
+    distance_ly: 7236.0
+    orbital_period_days: 5.6196
+    orbital_period_s: 485614.0
+    eccentricity: 0.018
+    inclination_deg: 27.1
+
+observables:
+  jet_power:
+    value_W: 3.846e37
+    value_Lsun: 10000.0
+    uncertainty_frac: 0.3
+    notes: "Kinetic jet power from equipartition arguments"
+
+  jet_velocity:
+    value_c: 0.50
+    uncertainty_c: 0.10
+    value_m_s: 1.499e8
+    notes: "Apparent proper motion from multi-epoch VLBI"
+
+  accretion_to_jet_efficiency:
+    value: 0.10
+    uncertainty: 0.05
+    notes: "Fraction of accretion power channelled to jet"
+
+  jet_extent:
+    value_ly: 16.0
+    value_m: 1.514e17
+    uncertainty_ly: 3.0
+    notes: "Total extent of resolved radio jet at 8.4 GHz"
+
+  jet_deflection:
+    multiple_direction_changes: true
+    n_observed_events: "multiple (>4)"
+    deflection_angle_range_deg: [5, 30]
+    notes: "Jet 'dances' — direction changes multiple times over 18 yr"
+
+  jet_position_angle:
+    initial_deg: 25.0
+    final_deg: 42.0
+    range_deg: [20, 50]
+    notes: "Position angle of jet axis projected on sky"
+
+utac_calibration:
+  gamma_jet: 0.04561
+  sigma_used: 2.2
+  r_used: 0.12
+  eta_input: 0.10
+  sigma_phi_min: 0.05402
+  sigma_phi_ratio: 0.864
+  frame_principle_satisfied: true
+  interpretation: >
+    Γ_jet ≈ 0.046 — Cygnus X-1 jet is sub-critical (Γ << 0.5).
+    The very low CREP value explains the jet's sensitivity to stellar
+    wind perturbations: a barely supercritical UTAC system responds
+    with large deflections to small external forcing.

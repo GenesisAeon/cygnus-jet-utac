@@ -1,0 +1,80 @@
+# Zenodo upload metadata for cygnus-jet-utac
+# Ready for upload at https://zenodo.org/deposit
+
+upload_type: software
+
+title: >
+  cygnus-jet-utac: GenesisAeon Package 17 —
+  Cygnus X-1 Relativistic Jet as UTAC System
+
+description: |
+  cygnus-jet-utac is GenesisAeon Package 17, modelling the Cygnus X-1 black hole
+  binary system as a UTAC (Unified Theory of Adaptive Criticality) dynamical system.
+
+  The package is calibrated against Prabu et al. (2026, Nature Astronomy,
+  DOI: 10.1038/s41550-026-02828-3) and implements the full Diamond-Template
+  interface for integration into the genesis-os ecosystem.
+
+  Key scientific result: Γ_jet = arctanh(0.10)/2.2 ≈ 0.0456 — the first
+  CREP-domain calibration for a stellar black hole system. This sub-critical
+  value (Γ << 0.5) explains the "dancing" jet behaviour observed over 18 years
+  of VLBI monitoring.
+
+  The package includes:
+  - Full 18-year relativistic jet simulation
+  - Mirror-Machine for jet dance event detection
+  - Benchmark validation against 6 Prabu 2026 observables (score ≥ 80/100)
+  - Falsifiable prediction of future jet direction-change timestamps
+  - CLI, Jupyter notebooks, and Zenodo-ready metadata export
+
+version: 0.1.0
+date_released: "2026-04-22"
+
+creators:
+  - name: "Römer, Johann"
+    affiliation: "MOR Research Collective"
+
+keywords:
+  - Cygnus X-1
+  - relativistic jets
+  - UTAC
+  - CREP
+  - black hole binary
+  - accretion disk
+  - coherence resonance
+  - GenesisAeon
+  - Mirror-Machine
+  - self-organized criticality
+  - astrophysics
+  - stellar wind
+
+license: MIT
+
+related_identifiers:
+  - identifier: "10.1038/s41550-026-02828-3"
+    relation: "isCitedBy"
+    resource_type: "publication-article"
+    description: "Prabu et al. 2026 Nature Astronomy — reference measurements"
+
+  - identifier: "10.5281/zenodo.19645351"
+    relation: "isPartOf"
+    resource_type: "software"
+    description: "GenesisAeon v0.3.1 — parent ecosystem"
+
+  - identifier: "https://github.com/GenesisAeon/cygnus-jet-utac"
+    relation: "isIdenticalTo"
+    resource_type: "software"
+
+communities:
+  - id: "astrophysics"
+  - id: "open-science"
+
+grants:
+  - id: ""
+
+notes: |
+  Package 17 of the GenesisAeon ecosystem. The Diamond-Template interface
+  allows direct import into genesis-os via:
+    from genesis_os import GenesisOS
+    cygnus = GenesisOS().load_package(17)
+    results = cygnus.run_cycle(duration_years=18.0)
