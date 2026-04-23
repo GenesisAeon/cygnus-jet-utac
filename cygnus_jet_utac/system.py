@@ -14,29 +14,28 @@ from __future__ import annotations
 
 import math
 import subprocess
-import time
 from typing import Any
 
 import numpy as np
 
 # Try to import from genesis-os; fall back to internal stubs
 try:
-    from genesis.core.utac import UTAC_ODE, UTACParams  # type: ignore[import]
     from genesis.core.crep import CREPTensor  # type: ignore[import]
-    from genesis.mirror.phase_loop import PhaseTransitionLoop  # type: ignore[import]
     from genesis.core.lagrangian import UnifiedLagrangian  # type: ignore[import]
+    from genesis.core.utac import UTAC_ODE, UTACParams  # type: ignore[import]
+    from genesis.mirror.phase_loop import PhaseTransitionLoop  # type: ignore[import]
     _GENESIS_AVAILABLE = True
 except ImportError:
     from cygnus_jet_utac._genesis_stubs import (
         UTAC_ODE,
-        UTACParams,
         CREPTensor,
         PhaseTransitionLoop,
         UnifiedLagrangian,
+        UTACParams,
     )
     _GENESIS_AVAILABLE = False
 
-from cygnus_jet_utac import __version__, __zenodo_doi__, __reference_doi__
+from cygnus_jet_utac import __reference_doi__, __version__, __zenodo_doi__
 from cygnus_jet_utac.accretion import AccretionDisk
 from cygnus_jet_utac.constants import (
     CYG_ACCRETION_EFFICIENCY,
@@ -44,7 +43,6 @@ from cygnus_jet_utac.constants import (
     CYG_COMPANION_MASS,
     CYG_JET_EXTENT,
     CYG_JET_POWER,
-    CYG_JET_VELOCITY,
     CYG_OBSERVATION_YEARS,
     CYG_ORBITAL_PERIOD,
     LIGHT_YEAR,
@@ -232,7 +230,6 @@ class CygnusJetUTAC:
 
         # ── Assemble results ──────────────────────────────────────────────────
         H_arr = np.array(self._history["H"])
-        G_arr = np.array(self._history["Gamma"])
         phase_events = self._mirror.get_dance_events()
 
         # Jet power: scale from UTAC H to physical jet power.
@@ -391,13 +388,12 @@ class CygnusJetUTAC:
             Zenodo-compatible metadata dictionary.
         """
         git_hash = "unknown"
-        try:
+        import contextlib
+        with contextlib.suppress(Exception):
             git_hash = subprocess.check_output(
                 ["git", "rev-parse", "--short", "HEAD"],
                 stderr=subprocess.DEVNULL,
             ).decode().strip()
-        except Exception:
-            pass
 
         record: dict[str, Any] = {
             "title": "cygnus-jet-utac: GenesisAeon Package 17 Simulation Run",
@@ -448,7 +444,7 @@ class CygnusJetUTAC:
         Returns:
             Dictionary with pass/fail for each observable and overall score.
         """
-        from cygnus_jet_utac.benchmark import run_benchmark, PRABU_2026_TARGETS
+        from cygnus_jet_utac.benchmark import run_benchmark
         return run_benchmark(self)
 
     # ── Plotting ──────────────────────────────────────────────────────────────
@@ -542,7 +538,9 @@ class CygnusJetUTAC:
 
         t_yr = np.array(self._history["t"]) / (365.25 * 86400.0)
         fig, ax = plt.subplots(figsize=(12, 5))
-        for comp, color in zip(["C", "R", "E", "P"], ["blue", "orange", "green", "red"]):
+        for comp, color in zip(
+            ["C", "R", "E", "P"], ["blue", "orange", "green", "red"], strict=True
+        ):
             ax.plot(t_yr, self._history[comp], lw=0.7, alpha=0.8,
                     color=color, label=comp)
         ax.plot(t_yr, self._history["Gamma"], lw=1.2, color="black",

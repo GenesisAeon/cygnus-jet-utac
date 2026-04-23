@@ -1,11 +1,10 @@
 """Tests for the benchmark module validating against Prabu et al. 2026."""
 
 import pytest
+
 from cygnus_jet_utac.benchmark import (
     PRABU_2026_TARGETS,
     run_benchmark,
-    BenchmarkReport,
-    ObservableResult,
 )
 from cygnus_jet_utac.system import CygnusJetUTAC
 
@@ -33,7 +32,7 @@ class TestPrabu2026Targets:
         assert PRABU_2026_TARGETS["orbital_period_days"][0] == pytest.approx(5.6, rel=1e-6)
 
     def test_tolerances_positive(self) -> None:
-        for name, (val, tol) in PRABU_2026_TARGETS.items():
+        for name, (_val, tol) in PRABU_2026_TARGETS.items():
             assert tol > 0.0, f"Tolerance for {name} must be positive"
 
 

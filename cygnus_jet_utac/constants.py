@@ -50,7 +50,8 @@ SIGMA_PHI: float = 1.0 / 16.0   # Frame Principle minimum variance ratio
 CYG_ORBITAL_ANGULAR_VEL: float = 2.0 * 3.14159265358979 / CYG_ORBITAL_PERIOD  # rad/s
 
 # Keplerian semi-major axis a from Kepler's third law: a³ = G(M1+M2)T²/(4π²)
-import math as _math
+import math as _math  # noqa: E402
+
 CYG_ORBITAL_SEPARATION: float = (
     G * (CYG_BH_MASS + CYG_COMPANION_MASS) * CYG_ORBITAL_PERIOD**2
     / (4.0 * _math.pi**2)

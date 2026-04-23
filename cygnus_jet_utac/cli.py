@@ -12,18 +12,14 @@ Usage::
 from __future__ import annotations
 
 import json
-import math
-import sys
 from pathlib import Path
-from typing import Optional
 
 import typer
-import yaml
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
 
-from cygnus_jet_utac import __version__, __zenodo_doi__
+from cygnus_jet_utac import __version__
 from cygnus_jet_utac.efficiency import calibrate_gamma_jet
 
 app = typer.Typer(
@@ -34,20 +30,19 @@ app = typer.Typer(
 console = Console()
 
 
-def _make_system(
-    dt: float = 3600.0,
-    seed: int = 42,
-) -> "CygnusJetUTAC":
+def _make_system(dt: float = 3600.0, seed: int = 42):  # noqa: ANN201
     from cygnus_jet_utac.system import CygnusJetUTAC
     return CygnusJetUTAC(dt=dt, seed=seed)
 
 
 @app.command("run")
 def run_cmd(
-    duration: float = typer.Option(18.0, "--duration", "--duration-years", help="Simulation duration (years)"),
+    duration: float = typer.Option(
+        18.0, "--duration", "--duration-years", help="Simulation duration (years)"
+    ),
     dt: float = typer.Option(3600.0, help="Time step (s)"),
     seed: int = typer.Option(42, help="Random seed"),
-    output: Optional[Path] = typer.Option(None, help="Output directory for results"),
+    output: Path | None = typer.Option(None, help="Output directory for results"),
     plots: bool = typer.Option(False, help="Generate summary plots"),
 ) -> None:
     """Run the full Cygnus X-1 UTAC simulation."""

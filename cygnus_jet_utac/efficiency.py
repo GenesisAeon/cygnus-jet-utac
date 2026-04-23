@@ -117,13 +117,17 @@ def calibrate_gamma_jet(
             f"            = {math.atanh(eta):.6f} / {sigma}",
             f"            = {gamma_jet:.6f}",
             "",
-            f"  UTAC fixed-point check:",
+            "  UTAC fixed-point check:",
             f"    H*/K = tanh(σ·Γ) = tanh({sigma:.2f}×{gamma_jet:.4f})",
             f"         = tanh({sigma*gamma_jet:.6f}) = {efficiency_check:.6f}",
-            f"    → η_recovered = {efficiency_check:.4f}  ✓" if abs(efficiency_check - eta) < 1e-10 else f"    → η_recovered = {efficiency_check:.4f}",
+            (
+                f"    → η_recovered = {efficiency_check:.4f}  ✓"
+                if abs(efficiency_check - eta) < 1e-10
+                else f"    → η_recovered = {efficiency_check:.4f}"
+            ),
             "",
-            f"  Frame Principle check (σ_Φ ≥ 1/16 = 0.0625):",
-            f"    σ_Φ,min = r·(1−tanh(σ·Γ))/2",
+            "  Frame Principle check (σ_Φ ≥ 1/16 = 0.0625):",
+            "    σ_Φ,min = r·(1−tanh(σ·Γ))/2",
             f"            = {r}·(1−{efficiency_check:.4f})/2",
             f"            = {sigma_phi_min:.6f}",
             f"    Ratio   = {sigma_phi_min:.6f} / {SIGMA_PHI:.4f} = {sigma_phi_ratio:.4f}",

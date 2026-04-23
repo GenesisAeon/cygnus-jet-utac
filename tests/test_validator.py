@@ -1,15 +1,13 @@
 """Tests for calibration and parameter validation."""
 
 import math
-import pytest
 
-from cygnus_jet_utac.efficiency import calibrate_gamma_jet
 from cygnus_jet_utac.constants import (
+    CYG_ACCRETION_EFFICIENCY,
     UTAC_R_DEFAULT,
     UTAC_SIGMA_DEFAULT,
-    CYG_ACCRETION_EFFICIENCY,
-    SIGMA_PHI,
 )
+from cygnus_jet_utac.efficiency import calibrate_gamma_jet
 
 
 def test_calibrate_returns_dict() -> None:
