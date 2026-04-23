@@ -70,7 +70,7 @@ class StellarWindModel:
         """
         if r <= self.R_star:
             return 0.0
-        return self.v_inf * (1.0 - self.R_star / r) ** self.beta
+        return float(self.v_inf * (1.0 - self.R_star / r) ** self.beta)
 
     # ── Density ───────────────────────────────────────────────────────────────
 

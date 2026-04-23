@@ -165,7 +165,8 @@ class RelJet:
 
         def _rodrigues_rotate(d: np.ndarray, axis: np.ndarray, angle: float) -> np.ndarray:
             c, s = math.cos(angle), math.sin(angle)
-            return d * c + np.cross(axis, d) * s + axis * np.dot(axis, d) * (1.0 - c)
+            result: np.ndarray = d * c + np.cross(axis, d) * s + axis * np.dot(axis, d) * (1.0 - c)
+            return result
 
         if abs(dtheta) > 1e-15:
             orb_phase = orbital.phase(t)
@@ -196,19 +197,22 @@ class RelJet:
         if d_norm > 1e-12:
             self._direction /= d_norm
 
-        return self._position.copy()
+        pos: np.ndarray = self._position.copy()
+        return pos
 
     # ── Observable quantities ─────────────────────────────────────────────────
 
     @property
     def direction(self) -> np.ndarray:
         """Current unit direction vector of the jet (dimensionless)."""
-        return self._direction.copy()
+        d: np.ndarray = self._direction.copy()
+        return d
 
     @property
     def position(self) -> np.ndarray:
         """Current jet head position (m)."""
-        return self._position.copy()
+        p: np.ndarray = self._position.copy()
+        return p
 
     def extent(self) -> float:
         """Total jet path length from launch point (m).

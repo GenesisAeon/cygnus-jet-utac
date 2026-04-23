@@ -350,7 +350,8 @@ class CygnusJetUTAC:
         Returns:
             Dictionary with keys C, R, E, P, Gamma (all dimensionless ∈ [0, 1]).
         """
-        return self._crep.to_dict()
+        result: dict[str, float] = self._crep.to_dict()
+        return result
 
     def get_utac_state(self) -> dict:
         """Return current UTAC ODE state.

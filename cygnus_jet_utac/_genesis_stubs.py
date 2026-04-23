@@ -140,8 +140,10 @@ class CREPTensor:
     @property
     def Gamma(self) -> float:
         """Γ = (C · R · E · P)^(1/4) — aggregate CREP value."""
-        return (max(0.0, self.C) * max(0.0, self.R)
-                * max(0.0, self.E) * max(0.0, self.P)) ** 0.25
+        return float(
+            (max(0.0, self.C) * max(0.0, self.R)
+             * max(0.0, self.E) * max(0.0, self.P)) ** 0.25
+        )
 
     def to_dict(self) -> dict[str, float]:
         """Serialize to dictionary for logging and Zenodo export."""

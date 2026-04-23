@@ -48,9 +48,9 @@ class CygnusOrbit:
         self._total_mass = bh_mass + companion_mass
         self._omega = 2.0 * math.pi / period  # rad/s
         # Derive separation from Kepler's third law using the provided masses/period
-        self._separation = (
-            G * self._total_mass * period**2 / (4.0 * math.pi**2)
-        ) ** (1.0 / 3.0)
+        self._separation: float = float(
+            (G * self._total_mass * period**2 / (4.0 * math.pi**2)) ** (1.0 / 3.0)
+        )
 
     @property
     def separation_m(self) -> float:
@@ -143,7 +143,7 @@ class CygnusOrbit:
             v_orb = ω · r_bh (m/s).
         """
         r_bh = self._separation * self.companion_mass / self._total_mass
-        return self._omega * r_bh
+        return float(self._omega * r_bh)
 
     def roche_lobe_radius(self) -> float:
         """Approximate Roche lobe radius of the BH (Eggleton 1983, m).
@@ -154,7 +154,7 @@ class CygnusOrbit:
         q = self.bh_mass / self.companion_mass
         numer = 0.49 * q ** (2.0 / 3.0)
         denom = 0.6 * q ** (2.0 / 3.0) + math.log(1.0 + q ** (1.0 / 3.0))
-        return self._separation * numer / denom
+        return float(self._separation * numer / denom)
 
     def to_dict(self) -> dict:
         """Serialize orbital parameters to dictionary."""
