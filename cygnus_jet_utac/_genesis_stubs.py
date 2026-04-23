@@ -11,11 +11,9 @@ Lightweight stubs for genesis-os core imports.
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass, field
-from typing import Optional
+from dataclasses import dataclass
 
 import numpy as np
-
 
 # ── UTAC ──────────────────────────────────────────────────────────────────────
 
@@ -91,7 +89,7 @@ class UTAC_ODE:
         self,
         gamma: float,
         dt: float,
-        rng: Optional[np.random.Generator] = None,
+        rng: np.random.Generator | None = None,
     ) -> tuple[float, float]:
         """Advance the UTAC ODE by one time step using 4th-order Runge-Kutta.
 
@@ -149,7 +147,7 @@ class CREPTensor:
         """Serialize to dictionary for logging and Zenodo export."""
         return {"C": self.C, "R": self.R, "E": self.E, "P": self.P, "Gamma": self.Gamma}
 
-    def clamp(self) -> "CREPTensor":
+    def clamp(self) -> CREPTensor:
         """Return a copy with all components clamped to [0, 1]."""
         return CREPTensor(
             C=max(0.0, min(1.0, self.C)),

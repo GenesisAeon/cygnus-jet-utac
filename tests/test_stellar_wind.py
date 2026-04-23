@@ -1,11 +1,12 @@
 """Tests for the Blue Supergiant stellar wind model."""
 
 import math
-import pytest
-import numpy as np
 
+import numpy as np
+import pytest
+
+from cygnus_jet_utac.constants import CYG_COMPANION_RADIUS, CYG_ORBITAL_SEPARATION
 from cygnus_jet_utac.stellar_wind import StellarWindModel
-from cygnus_jet_utac.constants import CYG_ORBITAL_SEPARATION, CYG_COMPANION_RADIUS
 
 
 @pytest.fixture

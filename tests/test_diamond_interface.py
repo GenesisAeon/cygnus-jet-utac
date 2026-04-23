@@ -6,6 +6,7 @@ type, and carry the required keys.
 """
 
 import pytest
+
 from cygnus_jet_utac.system import CygnusJetUTAC
 
 

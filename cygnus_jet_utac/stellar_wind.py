@@ -13,13 +13,12 @@ import math
 import numpy as np
 
 from cygnus_jet_utac.constants import (
-    CYG_COMPANION_MASS,
     CYG_COMPANION_RADIUS,
+    CYG_ORBITAL_PERIOD,
     CYG_ORBITAL_SEPARATION,
     CYG_WIND_BETA,
     CYG_WIND_MDOT,
     CYG_WIND_VINF,
-    CYG_ORBITAL_PERIOD,
 )
 
 

@@ -1,13 +1,14 @@
 """Tests for the relativistic jet propagation model."""
 
 import math
-import pytest
-import numpy as np
 
+import numpy as np
+import pytest
+
+from cygnus_jet_utac.constants import C_LIGHT
 from cygnus_jet_utac.jet import RelJet
 from cygnus_jet_utac.orbital import CygnusOrbit
 from cygnus_jet_utac.stellar_wind import StellarWindModel
-from cygnus_jet_utac.constants import C_LIGHT, CYG_JET_VELOCITY, LIGHT_YEAR
 
 
 @pytest.fixture

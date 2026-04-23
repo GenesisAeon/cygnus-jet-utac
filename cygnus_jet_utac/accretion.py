@@ -15,13 +15,10 @@ from cygnus_jet_utac.constants import (
     ACCRETION_RADIATIVE_EFF,
     C_LIGHT,
     CYG_BH_MASS,
-    CYG_JET_POWER,
     CYG_ORBITAL_PERIOD,
-    G,
     M_PROTON,
     SIGMA_T,
-    UTAC_R_DEFAULT,
-    UTAC_SIGMA_DEFAULT,
+    G,
 )
 
 

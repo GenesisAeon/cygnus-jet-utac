@@ -1,11 +1,12 @@
 """Tests for the Cygnus X-1 binary orbital dynamics."""
 
 import math
-import pytest
-import numpy as np
 
+import numpy as np
+import pytest
+
+from cygnus_jet_utac.constants import CYG_BH_MASS, CYG_COMPANION_MASS, CYG_ORBITAL_PERIOD
 from cygnus_jet_utac.orbital import CygnusOrbit
-from cygnus_jet_utac.constants import CYG_ORBITAL_PERIOD, CYG_BH_MASS, CYG_COMPANION_MASS
 
 
 @pytest.fixture

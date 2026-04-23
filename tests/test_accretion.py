@@ -1,8 +1,8 @@
 """Tests for the accretion disk model."""
 
 import pytest
+
 from cygnus_jet_utac.accretion import AccretionDisk
-from cygnus_jet_utac.constants import CYG_BH_MASS, C_LIGHT
 
 
 @pytest.fixture
@@ -56,15 +56,15 @@ class TestUTACNormalisation:
     def test_to_utac_H_at_eddington(self, disk: AccretionDisk) -> None:
         mdot_edd = disk.eddington_accretion_rate()
         H = disk.to_utac_H(mdot_edd)
-        assert H == pytest.approx(1.0, abs=1e-9)
+        assert pytest.approx(1.0, abs=1e-9) == H
 
     def test_to_utac_H_zero_at_zero_mdot(self, disk: AccretionDisk) -> None:
         H = disk.to_utac_H(0.0)
-        assert H == pytest.approx(0.0, abs=1e-12)
+        assert pytest.approx(0.0, abs=1e-12) == H
 
     def test_to_utac_H_clamped(self, disk: AccretionDisk) -> None:
         H = disk.to_utac_H(disk.eddington_accretion_rate() * 100.0)
-        assert H == pytest.approx(1.0, abs=1e-9)
+        assert pytest.approx(1.0, abs=1e-9) == H
 
     def test_roundtrip(self, disk: AccretionDisk) -> None:
         mdot = disk.eddington_accretion_rate() * 0.08

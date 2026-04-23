@@ -1,11 +1,12 @@
 """Tests for the JetMirrorMachine phase-transition detector."""
 
 import math
-import pytest
-import numpy as np
 
-from cygnus_jet_utac.mirror_jet import JetMirrorMachine, DanceEvent
+import numpy as np
+import pytest
+
 from cygnus_jet_utac.constants import CYG_ORBITAL_PERIOD
+from cygnus_jet_utac.mirror_jet import JetMirrorMachine
 
 
 @pytest.fixture

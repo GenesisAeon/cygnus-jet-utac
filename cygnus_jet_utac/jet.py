@@ -13,13 +13,9 @@ from typing import TYPE_CHECKING
 import numpy as np
 
 from cygnus_jet_utac.constants import (
-    AU,
     C_LIGHT,
-    CYG_JET_EXTENT,
     CYG_JET_POWER,
-    CYG_JET_VELOCITY,
     LIGHT_YEAR,
-    M_PROTON,
 )
 
 if TYPE_CHECKING:
@@ -96,8 +92,8 @@ class RelJet:
 
     def deflection_angle(
         self,
-        wind: "StellarWindModel",
-        orbital: "CygnusOrbit",
+        wind: StellarWindModel,
+        orbital: CygnusOrbit,
         t: float,
     ) -> float:
         """Deflection angle dθ per unit time from stellar wind (rad/s).
@@ -136,8 +132,8 @@ class RelJet:
     def propagate(
         self,
         dt: float,
-        wind: "StellarWindModel",
-        orbital: "CygnusOrbit",
+        wind: StellarWindModel,
+        orbital: CygnusOrbit,
         t: float,
         crep_gamma: float = 0.0,
     ) -> np.ndarray:

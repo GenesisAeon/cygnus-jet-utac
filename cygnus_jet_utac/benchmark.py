@@ -7,11 +7,8 @@ published reference values. Returns a BenchmarkReport with pass/fail,
 
 from __future__ import annotations
 
-import math
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
-
-import numpy as np
 
 if TYPE_CHECKING:
     from cygnus_jet_utac.system import CygnusJetUTAC
@@ -92,7 +89,7 @@ class BenchmarkReport:
         return "\n".join(lines)
 
 
-def run_benchmark(system: "CygnusJetUTAC") -> dict:
+def run_benchmark(system: CygnusJetUTAC) -> dict:
     """Run full validation of a CygnusJetUTAC instance against Prabu 2026.
 
     If the system has no results (run_cycle not yet called), runs an 18-year

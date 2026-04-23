@@ -1,6 +1,7 @@
 """Tests for the cygnus-jet-utac CLI commands."""
 
 import json
+
 from typer.testing import CliRunner
 
 from cygnus_jet_utac.cli import app

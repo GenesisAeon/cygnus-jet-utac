@@ -16,7 +16,6 @@ from cygnus_jet_utac.constants import (
     CYG_COMPANION_MASS,
     CYG_ORBITAL_PERIOD,
     CYG_ORBITAL_SEPARATION,
-    G,
 )
 
 

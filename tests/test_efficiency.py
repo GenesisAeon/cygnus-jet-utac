@@ -1,15 +1,15 @@
 """Tests for the Γ_jet calibration module — the central scientific result."""
 
 import math
-import pytest
+
 import numpy as np
+import pytest
 
 from cygnus_jet_utac.efficiency import (
     calibrate_gamma_jet,
     efficiency_from_gamma,
     gamma_scan,
 )
-from cygnus_jet_utac.constants import SIGMA_PHI, UTAC_SIGMA_DEFAULT, UTAC_R_DEFAULT
 
 
 class TestCalibrateGammaJet:
