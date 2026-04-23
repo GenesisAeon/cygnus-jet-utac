@@ -1,101 +1,51 @@
-"""Tests for the CLI commands."""
+"""Tests for the cygnus-jet-utac CLI commands."""
 
-from pathlib import Path
+import json
 
 from typer.testing import CliRunner
 
-from diamond_setup.cli import app
-from diamond_setup.templates import REGISTRY
+from cygnus_jet_utac.cli import app
 
 runner = CliRunner()
 
 
-def test_version():
-    result = runner.invoke(app, ["version"])
+def test_calibrate_command() -> None:
+    result = runner.invoke(app, ["calibrate"])
     assert result.exit_code == 0
-    assert "1.0.0" in result.output
+    assert "0.04" in result.output or "gamma" in result.output.lower()
 
 
-def test_list_templates():
-    result = runner.invoke(app, ["list-templates"])
+def test_check_diamond_command() -> None:
+    result = runner.invoke(app, ["check-diamond"])
     assert result.exit_code == 0
-    for name in REGISTRY:
-        assert name in result.output
+    assert "diamond" in result.output.lower() or "pass" in result.output.lower()
 
 
-def test_scaffold_minimal(tmp_path):
-    result = runner.invoke(app, ["scaffold", "hello-world", "--output-dir", str(tmp_path)])
+def test_run_command_short() -> None:
+    result = runner.invoke(app, ["run", "--duration-years", "0.1", "--dt", "86400"])
     assert result.exit_code == 0, result.output
-    assert (tmp_path / "hello-world" / "pyproject.toml").exists()
 
 
-def test_scaffold_genesis(tmp_path):
+def test_benchmark_command_short() -> None:
     result = runner.invoke(
-        app,
-        ["scaffold", "my-genesis", "--template", "genesis", "--output-dir", str(tmp_path)],
+        app, ["benchmark", "--duration-years", "0.1", "--dt", "86400"]
     )
     assert result.exit_code == 0, result.output
-    assert (tmp_path / "my-genesis" / "domains.yaml").exists()
+    assert "score" in result.output.lower() or "benchmark" in result.output.lower()
 
 
-def test_scaffold_unknown_template():
-    result = runner.invoke(app, ["scaffold", "x", "--template", "nonexistent"])
-    assert result.exit_code != 0
-    assert "Unknown template" in result.output
-
-
-def test_scaffold_existing_dir(tmp_path):
-    (tmp_path / "existing-proj").mkdir()
-    result = runner.invoke(app, ["scaffold", "existing-proj", "--output-dir", str(tmp_path)])
-    assert result.exit_code != 0
-    assert "already" in result.output and "exists" in result.output
-
-
-def test_scaffold_dry_run_no_files(tmp_path):
-    result = runner.invoke(
-        app, ["scaffold", "dry-proj", "--output-dir", str(tmp_path), "--dry-run"]
-    )
-    assert result.exit_code == 0
-    assert "Dry run" in result.output
-    assert not (tmp_path / "dry-proj").exists()
-
-
-def test_scaffold_with_overrides(tmp_path):
+def test_zenodo_export_command(tmp_path) -> None:
+    out_file = tmp_path / "zenodo.json"
     result = runner.invoke(
         app,
         [
-            "scaffold",
-            "custom-proj",
-            "--output-dir",
-            str(tmp_path),
-            "--author",
-            "Test Author",
-            "--description",
-            "A test project",
+            "zenodo-export",
+            "--duration-years", "0.1",
+            "--dt", "86400",
+            "--output", str(out_file),
         ],
     )
     assert result.exit_code == 0, result.output
-    pyproject = (tmp_path / "custom-proj" / "pyproject.toml").read_text()
-    assert "Test Author" in pyproject
-    assert "A test project" in pyproject
-
-
-def test_validate_current_project():
-    """Running validate on diamond-setup's own root should pass."""
-    # Find the repo root (parent of tests/)
-    repo_root = Path(__file__).parent.parent
-    result = runner.invoke(app, ["validate", str(repo_root)])
-    assert result.exit_code == 0, result.output
-    assert "passed" in result.output.lower() or "✔" in result.output
-
-
-def test_validate_missing_pyproject(tmp_path):
-    """A directory without pyproject.toml should fail validation."""
-    result = runner.invoke(app, ["validate", str(tmp_path)])
-    assert result.exit_code != 0
-    assert "error" in result.output.lower() or "✘" in result.output
-
-
-def test_validate_nonexistent_path():
-    result = runner.invoke(app, ["validate", "/nonexistent/path/xyz"])
-    assert result.exit_code != 0
+    assert out_file.exists()
+    data = json.loads(out_file.read_text())
+    assert "title" in data or "version" in data or "doi" in data
