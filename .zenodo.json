@@ -1,0 +1,33 @@
+{
+  "title": "cygnus-jet-utac v0.1.0: UTAC Analysis of Astrophysical Relativistic Jet Criticality",
+  "version": "0.1.0",
+  "upload_type": "software",
+  "access_right": "open",
+  "language": "eng",
+  "creators": [
+    {
+      "name": "Römer, Johann",
+      "affiliation": "GenesisAeon (Independent Researcher)"
+    }
+  ],
+  "description": "cygnus-jet-utac v0.1.0 applies UTAC (Universal Threshold Activation Criticality) to relativistic jet dynamics in Cygnus X-1 and analogous X-ray binary systems. The UTAC-Logistic ODE detects self-organized critical thresholds in jet quenching, re-ignition, and intermittency cycles. CREP metrics quantify the coherence and emergence properties of jet-state transitions. This package validates UTAC threshold detection against high-energy astrophysical time series and is part of the GenesisAeon ecosystem (genesis-os). Dual-licensed: GPLv3-or-later (code) + CC BY 4.0 (documentation).",
+  "keywords": [
+    "genesis-aeon", "utac", "crep", "criticality", "self-organized-criticality",
+    "mirror-machine", "fractal", "astrophysics", "relativistic-jets",
+    "cygnus-x1", "x-ray-binary", "phase-transitions", "emergence"
+  ],
+  "license": "GPL-3.0-or-later",
+  "related_identifiers": [
+    {
+      "identifier": "https://doi.org/10.5281/zenodo.19645351",
+      "relation": "isPartOf",
+      "scheme": "doi",
+      "resource_type": "publication-article"
+    },
+    {
+      "identifier": "https://github.com/GenesisAeon/cygnus-jet-utac",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
