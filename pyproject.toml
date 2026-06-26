@@ -1,9 +1,9 @@
 [project]
 name = "cygnus-jet-utac"
-version = "0.1.0"
+version = "1.0.0"
 description = "GenesisAeon Package 17: Cygnus X-1 Relativistic Jet as UTAC System"
 readme = "README.md"
-license = { text = "MIT" }
+license = { text = "GPL-3.0-or-later" }
 authors = [{ name = "Johann Römer", email = "" }]
 requires-python = ">=3.10"
 keywords = [
@@ -20,7 +20,7 @@ keywords = [
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -41,7 +41,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-genesis = ["genesis-os>=0.3.1"]
+genesis = ["genesis-os>=1.0.0"]
 notebooks = ["jupyter", "ipywidgets", "plotly", "nbconvert"]
 dev = [
     "pytest>=7.0",
