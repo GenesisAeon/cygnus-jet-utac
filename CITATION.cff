@@ -5,9 +5,9 @@ authors:
   - family-names: Römer
     given-names: Johann
     affiliation: "MOR Research Collective"
-version: 0.1.0
-date-released: "2026-04"
-license: MIT
+version: 1.0.0
+date-released: "2026-06"
+license: GPL-3.0-or-later
 repository-code: "https://github.com/GenesisAeon/cygnus-jet-utac"
 doi: "10.5281/zenodo.19645351"
 abstract: >
