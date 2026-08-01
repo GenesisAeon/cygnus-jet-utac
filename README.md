@@ -64,11 +64,10 @@ relativistic jet, with a characteristic CREP coupling value of
 
 ## Citation
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.PLACEHOLDER.svg)](https://doi.org/10.5281/zenodo.PLACEHOLDER)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20935078.svg)](https://doi.org/10.5281/zenodo.20935078)
 
-DOI will be assigned automatically on first GitHub Release once
-Zenodo–GitHub integration is enabled for this repo (a separate Concept
-DOI, 10.5281/zenodo.19645351, already covers the GenesisAeon whitepaper).
+(A separate Concept DOI, 10.5281/zenodo.19645351, covers the GenesisAeon
+whitepaper.)
 
 ## License
 

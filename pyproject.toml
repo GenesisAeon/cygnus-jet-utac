@@ -57,7 +57,7 @@ cygnus-jet = "cygnus_jet_utac.cli:main"
 [project.urls]
 "Repository" = "https://github.com/GenesisAeon/cygnus-jet-utac"
 "GenesisAeon Ecosystem" = "https://github.com/GenesisAeon"
-"Zenodo" = "https://doi.org/10.5281/zenodo.19645351"
+"Zenodo" = "https://doi.org/10.5281/zenodo.20935078"
 "Reference Paper" = "https://doi.org/10.1038/s41550-026-02828-3"
 
 [build-system]

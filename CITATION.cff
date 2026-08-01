@@ -9,7 +9,7 @@ version: 1.0.0
 date-released: "2026-06"
 license: GPL-3.0-or-later
 repository-code: "https://github.com/GenesisAeon/cygnus-jet-utac"
-doi: "10.5281/zenodo.19645351"
+doi: "10.5281/zenodo.20935078"
 abstract: >
   cygnus-jet-utac (GenesisAeon Package 17) models the Cygnus X-1 black hole
   binary system as a UTAC dynamical system, calibrated against Prabu et al.
