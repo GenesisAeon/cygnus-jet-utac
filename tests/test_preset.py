@@ -6,7 +6,7 @@ from cygnus_jet_utac import CygnusJetUTAC
 
 def test_version_string() -> None:
     assert isinstance(cygnus_jet_utac.__version__, str)
-    assert cygnus_jet_utac.__version__ == "1.0.1"
+    assert cygnus_jet_utac.__version__ == "1.0.2"
 
 
 def test_zenodo_doi_present() -> None:

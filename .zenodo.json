@@ -1,6 +1,6 @@
 {
-  "title": "cygnus-jet-utac v1.0.1: UTAC Analysis of Astrophysical Relativistic Jet Criticality",
-  "version": "1.0.1",
+  "title": "cygnus-jet-utac v1.0.2: UTAC Analysis of Astrophysical Relativistic Jet Criticality",
+  "version": "1.0.2",
   "upload_type": "software",
   "access_right": "open",
   "language": "eng",
@@ -10,7 +10,7 @@
       "affiliation": "GenesisAeon (Independent Researcher)"
     }
   ],
-  "description": "cygnus-jet-utac v1.0.1 applies UTAC (Universal Threshold Activation Criticality) to relativistic jet dynamics in Cygnus X-1 and analogous X-ray binary systems. The UTAC-Logistic ODE detects self-organized critical thresholds in jet quenching, re-ignition, and intermittency cycles. CREP metrics quantify the coherence and emergence properties of jet-state transitions. This package validates UTAC threshold detection against high-energy astrophysical time series and is part of the GenesisAeon ecosystem (genesis-os). Dual-licensed: GPLv3-or-later (code) + CC BY 4.0 (documentation).",
+  "description": "cygnus-jet-utac v1.0.2 applies UTAC (Universal Threshold Activation Criticality) to relativistic jet dynamics in Cygnus X-1 and analogous X-ray binary systems, with genuinely independent, RK4-integrated ODE dynamics and textbook-correct surrounding astrophysics (CAK stellar-wind law, relativistic jet kinematics, Keplerian orbit). The headline Gamma_jet calibration and its benchmark comparison against Prabu et al. 2026 are construction artifacts rather than independent validation (see efficiency.py and benchmark.py for the full caveat) -- CREP metrics and benchmark scoring should be read as internal-consistency checks on the model, not confirmed agreement with independent observations. Part of the GenesisAeon ecosystem (genesis-os). Dual-licensed: GPLv3-or-later (code) + CC BY 4.0 (documentation).",
   "keywords": [
     "genesis-aeon", "utac", "crep", "criticality", "self-organized-criticality",
     "mirror-machine", "fractal", "astrophysics", "relativistic-jets",

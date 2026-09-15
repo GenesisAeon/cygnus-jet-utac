@@ -18,7 +18,7 @@ Quick start::
 
 from __future__ import annotations
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 __author__ = "Johann Römer"
 __zenodo_doi__ = "10.5281/zenodo.19645351"
 __reference_doi__ = "10.1038/s41550-026-02828-3"

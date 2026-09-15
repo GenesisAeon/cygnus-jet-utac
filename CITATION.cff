@@ -5,7 +5,7 @@ authors:
   - family-names: Römer
     given-names: Johann
     affiliation: "MOR Research Collective"
-version: 1.0.1
+version: 1.0.2
 date-released: "2026-09-15"
 license: GPL-3.0-or-later
 repository-code: "https://github.com/GenesisAeon/cygnus-jet-utac"
@@ -13,9 +13,12 @@ doi: "10.5281/zenodo.20935078"
 abstract: >
   cygnus-jet-utac (GenesisAeon Package 17) models the Cygnus X-1 black hole
   binary system as a UTAC dynamical system, calibrated against Prabu et al.
-  (2026, Nature Astronomy). Key result: Γ_jet = arctanh(0.10)/2.2 ≈ 0.0456,
-  the first CREP-domain calibration for a stellar black hole system. Implements
-  the Diamond-Template interface for genesis-os integration.
+  (2026, Nature Astronomy). Key result: Γ_jet = arctanh(0.10)/2.2 ≈ 0.0456 --
+  an algebraic rescaling of the measured 10% efficiency via a shared,
+  cross-package sigma=2.2 default not independently derived for this domain
+  (see efficiency.py for the full caveat), not an independently validated
+  cross-domain calibration. Implements the Diamond-Template interface for
+  genesis-os integration.
 keywords:
   - "Cygnus X-1"
   - "relativistic jets"

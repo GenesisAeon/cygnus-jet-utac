@@ -1,21 +1,36 @@
 """Accretion-to-jet efficiency calibration via UTAC fixed-point inversion.
 
-The central new scientific result of Package 17:
-
     Given the measured η = 10 % efficiency (Prabu et al. 2026), invert the
     UTAC fixed-point relation H* = K·tanh(σ·Γ) to recover Γ_jet — the
     domain-specific CREP value for the Cygnus X-1 jet system.
 
     Result: Γ_jet = arctanh(η) / σ ≈ arctanh(0.10) / 2.2 ≈ 0.0456
 
-    This is the first CREP-domain calibration for a stellar black hole system.
-    The sub-critical value (Γ << 0.5) explains why the jet is so sensitive to
-    stellar wind perturbations — a *barely supercritical* UTAC system.
+HONESTY NOTE (2026-09-15, ecosystem-wide Gamma-circularity review): this is
+an algebraic inversion, not an independent calibration -- for ANY sigma,
+this same formula recovers eta exactly by construction (both
+"utac_fixed_point_check" and "efficiency_check" below will always pass).
+sigma=2.2 itself ("UTAC_SIGMA_DEFAULT", commented "ERA5 baseline" in
+constants.py) is a shared default reused unchanged from the GenesisAeon
+climate/AMOC packages -- verified byte-identical to amoc-utac's own
+UTAC_SIGMA -- not independently derived from Prabu et al. 2026 or any
+Cygnus-X-1-specific source. Further: benchmark.py's other five "Prabu 2026"
+targets (jet_power_W, jet_velocity_c, jet_extent_ly, orbital_period_days,
+dance_events_per_year) were traced individually and are each either an
+echoed input constant or a free parameter explicitly tuned to hit that
+exact target -- none is an independent prediction. The underlying UTAC
+ODE integration and the surrounding astrophysics (CAK wind law,
+relativistic jet kinematics, Keplerian orbit) ARE genuine, independently
+implemented physics -- only the Gamma_jet "first CREP-domain calibration"
+framing itself does not hold up. See
+D:\\mandala\\crep-utac-afet-formalism\\worked_example_cygnus_jet_utac.md
+and FOLLOWUP_TICKETS.md for the full analysis.
 """
 
 from __future__ import annotations
 
 import math
+from typing import Any
 
 import numpy as np
 
@@ -33,7 +48,7 @@ def calibrate_gamma_jet(
     r: float = UTAC_R_DEFAULT,
     K: float = 1.0,
     verbose: bool = True,
-) -> dict:
+) -> dict[str, Any]:
     """Invert η = H*/K = tanh(σ·Γ) to solve for Γ_jet.
 
     Derivation:
@@ -90,7 +105,7 @@ def calibrate_gamma_jet(
         f"small stellar wind perturbations drive large direction changes."
     )
 
-    result: dict = {
+    result: dict[str, Any] = {
         "gamma_jet": gamma_jet,
         "sigma_phi_min": sigma_phi_min,
         "sigma_phi_ratio": sigma_phi_ratio,
@@ -155,9 +170,9 @@ def efficiency_from_gamma(gamma: float, sigma: float = UTAC_SIGMA_DEFAULT) -> fl
 
 
 def gamma_scan(
-    eta_values: np.ndarray | None = None,
+    eta_values: np.ndarray[Any, Any] | None = None,
     sigma: float = UTAC_SIGMA_DEFAULT,
-) -> tuple[np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray[Any, Any], np.ndarray[Any, Any]]:
     """Scan η → Γ_jet relationship across a range of efficiencies.
 
     Args:

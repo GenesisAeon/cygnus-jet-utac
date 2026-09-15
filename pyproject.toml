@@ -1,6 +1,6 @@
 [project]
 name = "cygnus-jet-utac"
-version = "1.0.1"
+version = "1.0.2"
 description = "GenesisAeon Package 17: Cygnus X-1 Relativistic Jet as UTAC System"
 readme = "README.md"
 license = { text = "GPL-3.0-or-later" }

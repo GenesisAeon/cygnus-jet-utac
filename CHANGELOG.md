@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-09-15
+
+### Fixed (documentation/metadata honesty, no numeric value change)
+- **Ecosystem-wide Γ-circularity review**: `Γ_jet ≈ 0.0456` is an
+  algebraic inversion of the measured 10% efficiency (Prabu et al.
+  2026), not an independent calibration — it recovers the input
+  exactly for ANY `sigma`. `UTAC_SIGMA_DEFAULT=2.2` (commented "ERA5
+  baseline" in `constants.py`) is a shared default reused unchanged
+  from the GenesisAeon climate/AMOC packages, verified byte-identical
+  to `amoc-utac`'s own `UTAC_SIGMA`, not independently derived from
+  Prabu et al. 2026 or any Cygnus-X-1-specific source. Further: all
+  five other "Prabu 2026" benchmark targets in `benchmark.py`
+  (`jet_power_W`, `jet_velocity_c`, `jet_extent_ly`,
+  `orbital_period_days`, `dance_events_per_year`) were traced
+  individually and are each either an echoed input constant or a free
+  parameter explicitly tuned to hit that exact target — none is an
+  independent prediction. The underlying UTAC ODE integration and the
+  surrounding astrophysics (CAK wind law, relativistic jet kinematics,
+  Keplerian orbit) are genuine, independently implemented physics —
+  only the "first CREP-domain calibration" framing does not hold up.
+  Removed/corrected this framing in `efficiency.py`, `benchmark.py`,
+  `CITATION.cff`, `.zenodo.json`. See
+  `D:\mandala\crep-utac-afet-formalism\worked_example_cygnus_jet_utac.md`
+  and `FOLLOWUP_TICKETS.md` for the full analysis.
+
+### Fixed (CI/typing only, no behavior change)
+- A handful of remaining `mypy --strict` `np.ndarray`/`dict` generic
+  type-parameter errors in `efficiency.py` and `benchmark.py`
+  (`np.ndarray[Any, Any]`, `dict[str, Any]`), found while touching
+  these files for the honesty fix above.
+
 ## [1.0.1] - 2026-09-15
 
 ### Fixed (CI only, no behavior change)

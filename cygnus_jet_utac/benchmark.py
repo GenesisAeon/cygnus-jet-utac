@@ -3,12 +3,27 @@
 Runs the CygnusJetUTAC system and scores each observable against the
 published reference values. Returns a BenchmarkReport with pass/fail,
 % deviation, and an overall score (0–100).
+
+HONESTY NOTE (2026-09-15, ecosystem-wide Gamma-circularity review): all
+six targets below were traced individually and are construction
+artifacts, not independent tests of the model against Prabu et al. 2026:
+"accretion_efficiency" IS the eta used to define Gamma_jet itself
+(efficiency.py); "jet_power_W" is scaled so the simulation returns this
+exact target by construction; "jet_velocity_c" is a hardcoded input
+parameter (RelJet's beta=0.5), not a prediction; "jet_extent_ly" is
+returned as a fixed constant, never simulated; "orbital_period_days" is
+an echoed input parameter; "dance_events_per_year" has its noise
+amplitude explicitly tuned to reproduce this exact value. This benchmark
+verifies internal consistency of the model construction, not agreement
+with independent observational data. See
+D:\\mandala\\crep-utac-afet-formalism\\worked_example_cygnus_jet_utac.md
+section 5 for the full per-target trace.
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
     from cygnus_jet_utac.system import CygnusJetUTAC
@@ -64,7 +79,7 @@ class BenchmarkReport:
     gamma_jet: float
     sigma_phi_satisfied: bool
     latex_table: str = field(default="", repr=False)
-    zenodo_json: dict = field(default_factory=dict, repr=False)
+    zenodo_json: dict[str, Any] = field(default_factory=dict, repr=False)
 
     def __str__(self) -> str:
         lines = [
@@ -89,7 +104,7 @@ class BenchmarkReport:
         return "\n".join(lines)
 
 
-def run_benchmark(system: CygnusJetUTAC) -> dict:
+def run_benchmark(system: CygnusJetUTAC) -> dict[str, Any]:
     """Run full validation of a CygnusJetUTAC instance against Prabu 2026.
 
     If the system has no results (run_cycle not yet called), runs an 18-year
