@@ -1,11 +1,11 @@
 [project]
 name = "cygnus-jet-utac"
-version = "1.0.0"
+version = "1.0.1"
 description = "GenesisAeon Package 17: Cygnus X-1 Relativistic Jet as UTAC System"
 readme = "README.md"
 license = { text = "GPL-3.0-or-later" }
 authors = [{ name = "Johann Römer", email = "" }]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 keywords = [
     "black holes",
     "relativistic jets",
@@ -22,7 +22,6 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Topic :: Scientific/Engineering :: Astronomy",

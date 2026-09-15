@@ -8,7 +8,7 @@ are in SI (m) or natural units.
 from __future__ import annotations
 
 import math
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 import numpy as np
 
@@ -51,9 +51,9 @@ class RelJet:
         self._rng = np.random.default_rng(seed)
 
         # Initial jet direction: along +z (perpendicular to orbital plane)
-        self._direction = np.array([0.0, 0.0, 1.0])
+        self._direction: np.ndarray[Any, Any] = np.array([0.0, 0.0, 1.0])
         # Jet head position in 3-D space (m), starting at origin (BH location)
-        self._position = np.zeros(3)
+        self._position: np.ndarray[Any, Any] = np.zeros(3)
         self._total_path = 0.0   # total path length (m)
         self._age = 0.0          # jet propagation time (s)
 
